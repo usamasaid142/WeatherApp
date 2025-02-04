@@ -1,4 +1,4 @@
-package com.osama.weatherapp.ui.theme
+package com.osama.weatherapp.feature.ui.theme
 
 import android.app.Activity
 import android.os.Build
