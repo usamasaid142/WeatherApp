@@ -1,3 +1,5 @@
+import java.io.FileInputStream
+import java.util.Properties
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -21,7 +23,8 @@ android {
             useSupportLibrary = true
         }
     }
-
+    val localProperties = Properties()
+    localProperties.load( FileInputStream("local.properties"))
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -33,6 +36,8 @@ android {
         getByName("debug") {
             signingConfig = signingConfigs.getByName("debug")
             buildConfigField("String","BASE_URL","\"https://api.openweathermap.org/\"")
+            buildConfigField("String", "API_KEY", localProperties.getProperty("API_KEY"))
+
         }
     }
     compileOptions {

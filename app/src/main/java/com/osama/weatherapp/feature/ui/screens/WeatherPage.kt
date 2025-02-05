@@ -34,6 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.osama.domain.model.GetCurrentWeatherResponse
+import com.osama.weatherapp.BuildConfig
 import com.osama.weatherapp.utilitis.DataBinding
 import com.osama.weatherapp.feature.ui.viewModels.WeatherViewModel
 import com.osama.weatherapp.utilitis.NetWorkResponse
@@ -70,7 +71,7 @@ fun WeatherPage(viewModel: WeatherViewModel) {
                     Text(text = "search for any Location")
                 }
             )
-            IconButton(onClick = { viewModel.getCurrentWeather(city,"f4c2c90d4744674ea08953b5c8e5f6be") }) {
+            IconButton(onClick = { viewModel.getCurrentWeather(city,BuildConfig.API_KEY) }) {
                Icon(imageVector = Icons.Default.Search, contentDescription ="search for any Location" )
             }
         }
