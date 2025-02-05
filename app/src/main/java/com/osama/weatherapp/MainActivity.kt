@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.osama.weatherapp.feature.ui.screens.WeatherPage
 import com.osama.weatherapp.feature.ui.theme.WeatherAppTheme
 import com.osama.weatherapp.feature.ui.viewModels.WeatherViewModel
+import com.osama.weatherapp.utilitis.NetWorkResponse
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -30,18 +31,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
-                       viewModel.getCurrentWeather("Egypt","f4c2c90d4744674ea08953b5c8e5f6be")
-                      lifecycleScope.launch {
-                          viewModel.weather.collect{
-                              Log.e("data ", "weather is:${it} ", )
-                              if (it != null) {
-                                  name= it.name.toString()
-                                  Log.e("data ", "weather is:${name} ", )
-                              }
-                          }
-                      }
-
                     WeatherPage(viewModel)
                 }
             }

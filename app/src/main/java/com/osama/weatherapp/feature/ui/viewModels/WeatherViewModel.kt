@@ -21,7 +21,7 @@ class WeatherViewModel @Inject constructor(
     private val getWeatherUseCase:GetCurrentWeather
 ) : ViewModel() {
 
-    private val _weather = MutableStateFlow<NetWorkResponse<GetCurrentWeatherResponse?>>(NetWorkResponse.Loading)
+    private val _weather = MutableStateFlow<NetWorkResponse<GetCurrentWeatherResponse?>>( NetWorkResponse.Success(null))
     val weather:StateFlow<NetWorkResponse<GetCurrentWeatherResponse?>> = _weather
     fun getCurrentWeather(city:String,appId:String) {
         NetWorkResponse.Loading
@@ -32,7 +32,7 @@ class WeatherViewModel @Inject constructor(
                    _weather.value=NetWorkResponse.Success(it)
                }
            }else{
-               _weather.value=NetWorkResponse.Error("Error")
+               _weather.value=NetWorkResponse.Error("fail to load data")
            }
        }
 
